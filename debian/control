@@ -1,0 +1,12 @@
+Source: ros-hydro-rosh-core
+Section: misc
+Priority: extra
+Maintainer: Dan Lazewatsky <dan@lazewatsky.com>
+Build-Depends: debhelper (>= 7.0.50~), ros-hydro-catkin
+Homepage: http://ros.org/wiki/rosh_core
+Standards-Version: 3.9.2
+
+Package: ros-hydro-rosh-core
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-rosh, ros-hydro-roshlaunch
+Description: Main ROSH scripting and interpreter environment.
