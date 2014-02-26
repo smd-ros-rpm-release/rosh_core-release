@@ -1,0 +1,20 @@
+ros-hydro-rosh (1.0.3-0quantal) quantal; urgency=high
+
+  * make sure shell.py gets put somewhere importable
+  * Contributors: Dan Lazewatsky
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Wed, 26 Feb 2014 06:00:00 -0000
+
+ros-hydro-rosh (1.0.2-0quantal) quantal; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+ros-hydro-rosh (1.0.1-0quantal) quantal; urgency=high
+
+  * Catkinized in preparation for release
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+
