@@ -1,0 +1,20 @@
+ros-hydro-rosh-core (1.0.3-0raring) raring; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Wed, 26 Feb 2014 06:00:00 -0000
+
+ros-hydro-rosh-core (1.0.2-0raring) raring; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+ros-hydro-rosh-core (1.0.1-0raring) raring; urgency=high
+
+  * Fixed an issue starting up the ipython shell
+  * Catkinized in preparation for release
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+
