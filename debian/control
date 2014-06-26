@@ -1,0 +1,12 @@
+Source: ros-hydro-roshlaunch
+Section: misc
+Priority: extra
+Maintainer: Dan Lazewatsky <dan@lazewatsky.com>
+Build-Depends: debhelper (>= 9.0.0), ros-hydro-catkin, ros-hydro-rosclean, ros-hydro-rosgraph, ros-hydro-roslib, ros-hydro-rosmaster, ros-hydro-rosout, ros-hydro-rospy
+Homepage: http://ros.org/wiki/roslaunch
+Standards-Version: 3.9.2
+
+Package: ros-hydro-roshlaunch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-hydro-rosclean, ros-hydro-rosgraph, ros-hydro-roslib, ros-hydro-rosmaster, ros-hydro-rosout, ros-hydro-rospy
+Description: roshlaunch is a temporary package for redesigning roslaunch to have better programmatic APIs for libraries like rosh.
