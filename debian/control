@@ -1,0 +1,12 @@
+Source: ros-indigo-roshlaunch
+Section: misc
+Priority: extra
+Maintainer: Dan Lazewatsky <dan@lazewatsky.com>
+Build-Depends: debhelper (>= 9.0.0), ros-indigo-catkin, ros-indigo-rosclean, ros-indigo-rosgraph, ros-indigo-roslib, ros-indigo-rosmaster, ros-indigo-rosout, ros-indigo-rospy
+Homepage: http://ros.org/wiki/roslaunch
+Standards-Version: 3.9.2
+
+Package: ros-indigo-roshlaunch
+Architecture: any
+Depends: ${shlibs:Depends}, ${misc:Depends}, ros-indigo-rosclean, ros-indigo-rosgraph, ros-indigo-roslib, ros-indigo-rosmaster, ros-indigo-rosout, ros-indigo-rospy
+Description: roshlaunch is a temporary package for redesigning roslaunch to have better programmatic APIs for libraries like rosh.
