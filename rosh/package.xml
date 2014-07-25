@@ -1,6 +1,6 @@
 <package>
   <name>rosh</name>
-  <version>1.0.5</version>
+  <version>1.0.6</version>
   <description>rosh is a Python-based scripting and runtime environment for ROS.  Through rosh and its various plugins, you can interact with ROS APIs in an introspectable and unified approach.</description>
   <maintainer email="dan@lazewatsky.com">Dan Lazewatsky</maintainer>
 
@@ -16,13 +16,6 @@
 
   <!-- Dependencies needed to compile this package. -->
   <build_depend>rospy</build_depend>
-  <build_depend>rosgraph</build_depend>
-  <build_depend>rosnode</build_depend>
-  <build_depend>rostopic</build_depend>
-  <build_depend>rosservice</build_depend>
-  <build_depend>rosparam</build_depend>
-  <build_depend>rosmsg</build_depend>
-  <build_depend>rostest</build_depend>
 
   <!-- Dependencies needed after this package is compiled. -->
   <run_depend>roshlaunch</run_depend>
