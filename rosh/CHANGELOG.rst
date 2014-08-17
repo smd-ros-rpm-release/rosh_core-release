@@ -2,6 +2,11 @@
 Changelog for package rosh
 ^^^^^^^^^^^^^^^^^^^^^^^^^^
 
+1.0.7 (2014-08-17)
+------------------
+* replace rxgraph with rqt_graph (doesn't support ns args)
+* Contributors: Dan Lazewatsky
+
 1.0.6 (2014-07-25)
 ------------------
 * fix a typo in Package._get_launches
