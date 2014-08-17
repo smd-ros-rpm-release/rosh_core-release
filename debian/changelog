@@ -1,0 +1,44 @@
+ros-indigo-rosh-core (1.0.7-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Sun, 17 Aug 2014 05:00:00 -0000
+
+ros-indigo-rosh-core (1.0.6-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Fri, 25 Jul 2014 05:00:00 -0000
+
+ros-indigo-rosh-core (1.0.5-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Mon, 07 Jul 2014 05:00:00 -0000
+
+ros-indigo-rosh-core (1.0.4-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 26 Jun 2014 05:00:00 -0000
+
+ros-indigo-rosh-core (1.0.3-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Wed, 26 Feb 2014 06:00:00 -0000
+
+ros-indigo-rosh-core (1.0.2-0trusty) trusty; urgency=high
+
+
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+ros-indigo-rosh-core (1.0.1-0trusty) trusty; urgency=high
+
+  * Fixed an issue starting up the ipython shell
+  * Catkinized in preparation for release
+
+ -- Dan Lazewatsky <dan@lazewatsky.com>  Thu, 06 Feb 2014 06:00:00 -0000
+
+
