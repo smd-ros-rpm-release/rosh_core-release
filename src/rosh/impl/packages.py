@@ -43,6 +43,8 @@ import roslib.packages
 import roslib.stack_manifest
 import roslib.stacks
 import rospkg
+from catkin.find_in_workspaces import find_in_workspaces as catkin_find
+import roslaunch.config
 
 # TODO: get rid of Namespace and Concept entirely as that really doesn't apply here and just requires workarounds
 from rosh.impl.namespace import Namespace, Concept, ResourceList
@@ -128,15 +130,17 @@ class Package(ManifestResource):
     #TODO: can we make nodes and launches plugins on top of packages,
     #that way rosh can be provided in the separated ROS stack.
     def _get_nodes(self):
-        paths = list_resources_by_dir(self.path, node_filter)
-        node_types = [os.path.basename(p) for p in paths]
-        d = dict([(launchablekey(t), LaunchableNode(self._config.ctx, self.name, t)) for t in node_types])
+        paths = sum(
+            [list_resources_by_dir(d, node_filter)
+             for d
+             in catkin_find(search_dirs=['libexec', 'share'], project=self.name)], []
+        )
+        d = dict([(launchablekey(os.path.basename(t)), LaunchableNode(self._config.ctx, self.name, t)) for t in paths])
         return AttrDict(d)
 
     def _get_launches(self):
         paths = list_resources_by_dir(self.path, launch_filter)
-        launch_types = [os.path.basename(p) for p in paths]
-        d = dict([(launchablekey(t), LaunchableNode(self._config.ctx, self.name, t)) for t in launch_types])
+        d = dict([(launchablekey(os.path.basename(t)), LaunchableFile(self._config.ctx, self.name, t)) for t in paths])
         return AttrDict(d)
 
     # use singular to match 'msg' global
@@ -158,16 +162,21 @@ except ImportError:
     roslaunch = FakeLaunch()
     
 class LaunchableNode(object):
-    def __init__(self, ctx, package, type_):
+    def __init__(self, ctx, package, path_, roslaunch_node=None):
         self.ctx = ctx
         self.package = package
-        self.type = type_
+        self.type = os.path.basename(path_)
+        self.path = os.path.dirname(path_)
+        self.roslaunch_node = roslaunch_node
     def __call__(self, *args, **kwds):
         # launch returns list of Nodes that were launched, so unwrap
         return self.ctx.launch(self.as_Node(), args=args, remap=kwds)[0]
         
     def as_Node(self):
-        return roslaunch.Node(self.package, self.type)
+        if self.roslaunch_node:
+            return self.roslaunch_node
+        else:
+            return roslaunch.Node(self.package, self.type)
     def __str__(self):
         return launchablekey(self.type)
     def _launch(self):
@@ -175,15 +184,30 @@ class LaunchableNode(object):
 
         
 class LaunchableFile(object):
-    def __init__(self, ctx, launch_file):
+    def __init__(self, ctx, package, launch_file):
         self.ctx = ctx
-        self.launch_file = launch_file
+        self.file = os.path.basename(launch_file)
+        self.path = os.path.dirname(launch_file)
+        self._launch_config = roslaunch.config.load_config_default([launch_file], 0)
+        self._nodes = None
     def __call__(self):
         raise NotImplemented
     def __str__(self):
         return launchablekey(self.launch_file)
     def _launch(self):
-        raise NotImplemented
+        return [self.ctx.launch(n.as_Node())[0] for n in self.nodes.__dict__.values()]
+    def _get_nodes(self):
+        if not self._nodes:
+            d = dict([
+                (
+                    launchablekey(n.name),
+                    LaunchableNode(self.ctx, n.package, roslib.packages.find_node(n.package, n.type)[0], n)
+                )
+                for n in self._launch_config.nodes])
+            self._nodes = AttrDict(d)
+        return self._nodes
+
+    nodes = property(_get_nodes)
 
 def node_filter(path, filename):
     """
